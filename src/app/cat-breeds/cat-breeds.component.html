@@ -1,0 +1,25 @@
+<div class="row" *ngIf="breeds$ | async as breeds; else loading">
+  <div class="card m-2" style="width: 18rem;" *ngFor="let breed of breeds">
+    <img *ngIf="breed.image" [src]="breed.image.url" class="card-img-top" alt="cat breed">
+    <div class="card-body">
+      <h5 class="card-title">{{breed.name}}</h5>
+      <p class="card-text">
+        {{breed.description}}<br/>
+        <button type="button" class="btn btn-link" (click)="onShowImagesClicked(breed)">See a big picture</button>
+      </p>
+      <span class="badge rounded-pill bg-primary" *ngFor="let temp of convertTemperament(breed.temperament)">
+        {{temp}}
+      </span>
+      <br/>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-template>
+
+

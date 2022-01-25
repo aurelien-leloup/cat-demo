@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  catApiKey: 'YOUR_CAT_API_KEY',
+  endpoint: 'https://api.thecatapi.com/v1'
 };
 
 /*
