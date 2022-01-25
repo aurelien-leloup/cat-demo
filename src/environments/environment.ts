@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  catApiKey: 'YOUR_CAT_API_KEY',
   endpoint: 'https://api.thecatapi.com/v1'
 };
 

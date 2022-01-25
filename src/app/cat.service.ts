@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {Breed} from "./models/breed";
 import {environment} from "../environments/environment";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Image} from "./models/image";
 
 @Injectable({
@@ -15,18 +15,14 @@ export class CatService {
   }
 
   getBreeds(): Observable<Breed[]> {
-    const headers = new HttpHeaders({
-      'x-api-key': environment.catApiKey
-    });
-    return this.http.get<Breed[]>(environment.endpoint + '/breeds', {headers});
+
+    return this.http.get<Breed[]>(environment.endpoint + '/breeds');
   }
 
   getImages(breedId: string): Observable<Image[]> {
-    const headers = new HttpHeaders({
-      'x-api-key': environment.catApiKey
-    });
+
     const params = new HttpParams().append('breed_id', breedId)
-    return this.http.get<Image[]>(environment.endpoint + '/images/search', {headers, params});
+    return this.http.get<Image[]>(environment.endpoint + '/images/search', {params});
   }
 
 }
